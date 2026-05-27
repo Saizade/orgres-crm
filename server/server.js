@@ -20,7 +20,7 @@ const io = new Server(httpServer, {
 app.use(cors({
     origin: [
         'http://localhost:5173',
-        'https://your-app-name.vercel.app' // Add your Vercel URL after deploying
+        'https://orgres-crm.vercel.app ',
     ],
     credentials: true,
 }));
@@ -58,7 +58,7 @@ io.on('connection', (socket) => {
 // Sync DB and start server
 const PORT = process.env.PORT || 8000;
 
-sequelize.sync({ alter: true })
+sequelize.sync()
     .then(() => {
         console.log('✅ Database synced');
         httpServer.listen(PORT, () => {
