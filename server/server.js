@@ -17,7 +17,13 @@ const io = new Server(httpServer, {
 });
 
 // Middleware
-app.use(cors({ origin: process.env.CLIENT_URL }));
+app.use(cors({
+    origin: [
+        'http://localhost:5173',
+        'https://your-app-name.vercel.app' // Add your Vercel URL after deploying
+    ],
+    credentials: true,
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
