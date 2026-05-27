@@ -20,8 +20,9 @@ const io = new Server(httpServer, {
 app.use(cors({
     origin: [
         'http://localhost:5173',
-        'https://orgres-crm.vercel.app ',
-    ],
+        'https://orgres-crm.vercel.app',
+        process.env.FRONTEND_URL,
+    ].filter(Boolean),
     credentials: true,
 }));
 app.use(express.json());
